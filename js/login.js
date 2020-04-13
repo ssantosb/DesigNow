@@ -34,6 +34,14 @@
         return check;
     });
 
+    $(document).ready(function($) {
+        $(document).on('submit', '#submit-form', function(event) {
+          event.preventDefault();
+        
+          alert('page did not reload');
+        });
+      });
+
 
 
     $('.validate-form .input100').each(function(){
