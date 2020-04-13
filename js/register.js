@@ -36,14 +36,14 @@
     $('.validate-form').on('submit',function(){
         var check = true;
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
+        for(var i=0; i<input.length; i++) 
+        {
+            if(validate(input[i]) == false)
+            {
                 showValidate(input[i]);
                 check=false;
             }
         }
-
-        return check;
     });
 
 
@@ -53,6 +53,7 @@
            $(this).parent().removeClass('true-validate');
         });
     });
+    
 
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'correo') {
