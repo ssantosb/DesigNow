@@ -8,6 +8,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <style>
+      .left, .right {
+  width: 25%;
+}
+
+      #div1 {
+        width: 300px;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+        justify-content: center;
+      }
+
+
+      </style>
+
+      <script>
+        function allowDrop(ev) {
+          ev.preventDefault();
+        }
+        
+        function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+        }
+        
+        function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+        }
+
+        </script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
@@ -117,32 +150,55 @@
 
     <div class="site-section">
 
-      <div class="card-title">
-        <center><h>Crea los mejores bocetos para que los diseñadores puedan ver tus ideas gráficamente. Elige entre crear un boceto con información y recursos propios o utilizar las  plantillas que te ofrecemos.</h> </center>
+
+      <div class="site-section bg-light">
+        <div class="container">
+          <div class="row">
+            
+            <div class="col-md-12 col-lg-12">
+            
+              <h2 class="site-heading text-black mb-5">Elige  <strong>una paleta de colores</strong></h2>
+              
+                <div class="row">
+                  <div class="column"><center><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></center></div>
+                  <div class ="column right"> </div>
+                  <div class ="column"><br><br><br><h5 class="mb-5">Selecciona una paleta de colores</h5></div>
+
+                </div>
+                <br>
+                <br>
+            
+
+                <div class="row">
+                  <div class="column left">
+                    <img id="drag1" src="images/PALETA1.jpg" draggable="true" ondragstart="drag(event)" width="300" height="200">
+                  </div>
+                  <div class="column middle">
+                    <img id="drag1" src="images/PALETA2.png" draggable="true" ondragstart="drag(event)" width="300" height="200">
+                  </div>
+                  <div class="column right">
+                    <img id="drag1" src="images/PALETA3.png" draggable="true" ondragstart="drag(event)" width="300" height="200">
+                  </div>
+                </div>  
+
+                <br>
+                <br>
+
+                <div class="row">
+
+                  <a href="diseño2c.html" class="btn btn-primary rounded-0 btn-lg">Siguiente</a>
+
+                </div>
+
+
+
+  
+    
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="row row-items">
-        <div class="col-6">
-          <a href="diseño1.html" class="d-flex text-center feature active p-4 mb-4 bg-white">
-            <span class="align-self-center w-100">
-              <span class="d-block mb-3">
-                <span class="flaticon-step-ladder display-3"></span>
-              </span>
-              <h3>Boceto personalizado</h3>
-            </span>
-          </a>
-        </div>
-        <div class="col-6">
-          <a href="diseño2.html" class="d-flex text-center feature active p-4 mb-4 bg-white">
-            <span class="align-self-center w-100">
-              <span class="d-block mb-3">
-                <span class="flaticon-sit-down display-3"></span>
-              </span>
-              <h3>Boceto con plantilla</h3>
-            </span>
-          </a>
-        </div>
-      </div>
     </div>
 
     

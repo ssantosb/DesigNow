@@ -23,6 +23,22 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        function allowDrop(ev) {
+          ev.preventDefault();
+        }
+        
+        function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+        }
+        
+        function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+        }
+        </script>
     
   </head>
   <body>
@@ -90,7 +106,7 @@
                       <li>
                         <a href="projects.html">Proyectos</a>
                       </li>
-                      <li><a href="news.html">Crear diseño</a></li>
+                      <li><a href="diseñoinicio.html">Crear diseño</a></li>
                       <li><a href="services.html">Pedir cita</a></li>
                       <li><a href="contact.html">Contacto</a></li>
                     </ul>
@@ -125,7 +141,8 @@
 
             </div>
 
-            <div class="row">          <center><a href="diseñoinicio.html" class="btn btn-primary rounded-0 btn-lg">Crear otro</a></center>
+            <div class="row">         
+                <center><a href="diseñoinicio.html" class="btn btn-primary rounded-0 btn-lg">Crear otro</a></center>
             </div>
         </div>
       </div>
