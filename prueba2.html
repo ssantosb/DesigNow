@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	
+	<title>Formulario simple de cotización desarrollado con Bootstrap y PHP</title>
+	<!-- set your website meta description and keywords -->
+	<meta name="description" content="Add your business website description here">
+	<meta name="keywords" content="Add your business website keywords here">
+	<!-- set your website favicon -->
+	<link href="favicon.html" rel="icon">	
+	
+	<!-- Bootstrap Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Font Awesome Stylesheets -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Template Main Stylesheets -->
+    <link rel="stylesheet" href="css/popup-form.css" type="text/css">	
+    
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900"> 
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+	
+</head>
+<body>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+            <h4 class="popup-title">Solicitud de cotización <i class="fa fa-sign-in"></i></h4>
+            
+            <div class="modal-body">
+                
+                <!-- start contact form -->
+                <form id="quoteForm" name="quoteForm" data-toggle="validator" class="popup-form">
+                    <div class="row">
+                        <div id="msgQuoteSubmit" class="hidden"></div>
+                        <div class="form-group col-sm-6">
+                            <div class="help-block with-errors"></div>
+                            <input name="fname7" id="fname7" placeholder="Nombre completo*" class="form-control" type="text" required data-error="Ingresa tu nombre"> 
+                            <div class="input-group-icon"><i class="fa fa-user"></i></div>
+                        </div><!-- end form-group -->
+                        <div class="form-group col-sm-6">
+                            <div class="help-block with-errors"></div>
+                            <input name="email7" id="email7" placeholder="Email*" pattern=".*@\w{2,}\.\w{2,}" class="form-control" type="email" required data-error="Ingresa tu correo electrónico"> 
+                            <div class="input-group-icon"><i class="fa fa-envelope"></i></div>
+                        </div><!-- end form-group -->
+                        <div class="form-group col-sm-6">
+                            <div class="help-block with-errors"></div>
+                            <input name="phone7" id="phone7" placeholder="Teléfono de contacto*" class="form-control" type="text" required data-error="Ingresa un teléfono válido">
+                            <div class="input-group-icon"><i class="fa fa-phone"></i></div> 
+                        </div><!-- end form-group -->
+                        <div class="form-group col-sm-6">
+                            <div class="help-block with-errors"></div>
+                            <select name="service" id="service" class="form-control" required data-error="Selecciona el servicio">
+                                <option value="">--- Selecciona un servicio* ---</option>
+                                <option value="Desarrollo web">Desarrollo web</option>
+                                <option value="Diseño web">Diseño web</option>
+                                <option value="Diseño gráfico">Diseño gráfico</option>
+                                <option value="e-Commerce">e-Commerce</option>
+                            </select>
+                            <div class="input-group-icon"><i class="fa fa-cogs"></i></div> 
+                        </div><!-- end form-group -->								
+                        <div class="form-group col-sm-12">
+                            <div class="help-block with-errors"></div>
+                            <select class="form-control" name="probudget" id="probudget" required data-error="Please Select Budget">
+                                <option value="">--- Selecciona el presupuesto de tu proyecto* ---</option>
+                                <option value="Alrededor de $500">Alrededor de $500</option>
+                                <option value="$500 - $1000">$500 - $1000</option>
+                                <option value="$1000 - $1500">$1000 - $1500</option>
+                                <option value="$1500 - $2000">$1500 - $2000</option>
+                                <option value="$2000 - $2500">$2000 - $2500</option>
+                                <option value="$2500 - $3000">$2500 - $3000</option>
+                                <option value="$3000 - $4000">$3000 - $4000</option>
+                                <option value="$4000 - $5000">$4000 - $5000</option>
+                                <option value="$5000+">$5000+</option>
+                            </select>
+                            <div class="input-group-icon"><i class="fa fa-cogs"></i></div> 
+                        </div><!-- end form-group -->
+                        <div class="form-group col-sm-12">
+                            <h5><strong>Prioridad*:</strong></h5>
+                            <label class="radio-inline"><input type="radio" name="priority" id="priority1" checked value="Baja">Baja</label>
+                            <label class="radio-inline"><input type="radio" name="priority" id="priority2" value="Media">Media</label> 
+                            <label class="radio-inline"><input type="radio" name="priority" id="priority3" value="Urgente">Urgente</label> 
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="help-block with-errors"></div>
+                            <textarea rows="3" name="message7" id="message7" placeholder="Escribe más detalles de tu proyecto*" class="form-control" required data-error="Ingresa un mensaje"></textarea>
+                            <div class="input-group-icon"><i class="fa fa-pencil"></i></div>
+                        </div><!-- end form-group -->
+                        
+                        <div class="form-group last col-sm-12">
+                            <button type="submit" id="submit7" name="submit7" class="btn btn-custom">Enviar solicitud</button>
+                        </div><!-- end form-group -->					
+                        <span class="sub-text">* Campos requeridos</span>
+                        <div class="clearfix"></div>
+                    </div><!-- end row -->
+                </form><!-- end form -->
+                <!-- end contact form -->
+                
+            </div>
+        </div>
+      
+</body>
+</html>
