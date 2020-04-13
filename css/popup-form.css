@@ -15,8 +15,8 @@
 .scrollup{bottom:40px;color:#fd810f;font-size:42px;height:40px;position:fixed;right:22px;text-align:center;width:40px;z-index:999;}
 .footer{padding-top:20px;position:fixed;bottom:0;background-color:#fff;width:100%;}
 .modal-dialog{max-width:700px;margin:50px auto;}
-.modal-header{border:none;padding:15px 5px 0;text-align:center;}
-.modal-header .close{margin:0;padding:0 15px;color:#0097e6;opacity:1;}
+.modal-header2{border:none;padding:15px 5px 0;text-align:center;}
+.modal-header2 .close2{margin:0;padding:0 15px;color:#0097e6;opacity:1;}
 .popup-title{color:#0097e6;font-size:24px;font-weight:bold;text-align:center;margin:0 auto 20px;}
 .modal-body{padding:0 20px 15px;}
 .popup-desc{color:#808080;font-size:24px;margin:30px auto;text-align:center;}
