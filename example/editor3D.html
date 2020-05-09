@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Render 3D</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/example.css" rel="stylesheet">
+
+    <script src="js/three.min.js"></script>
+    <script src="js/blueprint3d.js"></script>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+    <script src="js/items.js"></script>
+    <script src="js/example.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row main-row">
+        <!-- Left Column -->
+        <div class="col-xs-3 sidebar">
+          <!-- Main Navigation -->
+          <ul class="nav nav-sidebar">
+            <div align="center"> 
+              <p>
+                  <a href="../index.html"><img border="0" alt="logo" src="../images/logo.png" width="170" height="120"></a>    
+              </p>
+          </div>
+            <li id="floorplan_tab"><a href="#">
+              Editor Plano
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+            <li id="design_tab"><a href="#">
+              Editor 3D
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+            <li id="items_tab"><a href="#">
+              Muebles y accesorios
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+          </ul>
+          <hr />
+
+          <!-- Context Menu -->
+          <div id="context-menu">
+            <div style="margin: 0 20px">
+              <span id="context-menu-name" class="lead"></span>
+              <br /><br />
+              <button class="btn btn-block btn-danger" id="context-menu-delete">
+                <span class="glyphicon glyphicon-trash"></span> 
+                Eliminar item
+              </button>
+            <br />
+            <div class="panel panel-default">
+              <div class="panel-heading">Ajustar</div>
+              <div class="panel-body" style="color: #333333">
+
+                <div class="form form-horizontal" class="lead">
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                       Anchura
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-width">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                      Profundidad 
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-depth">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                      Altura
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-height">
+                    </div>
+                  </div>
+                </div>
+                <small><span class="text-muted">Las medidas dadas se encuentran en pulgadas.</span></small>
+              </div>
+            </div>
+
+            <label><input type="checkbox" id="fixed" /> Bloquear</label>
+            <br /><br />
+            </div>
+          </div>
+
+          <!-- Floor textures -->
+          <div id="floorTexturesDiv" style="display:none; padding: 0 20px">
+            <div class="panel panel-default">
+              <div class="panel-heading">Baldosa</div>
+              <div class="panel-body" style="color: #333333">
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_light_fine_wood.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                    <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/opaque_dry.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="opaque_dry" src="rooms/thumbnails/opaque_dry.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/dark-wood.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/dark-wood.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/stone-dark.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/stone-dark.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/white2.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/white2.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light-wood.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/light-wood.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/dark-wood2.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/dark-wood2.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/modern-dark.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/modern-dark.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/dark3.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/dark3.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/anotherlightxd.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="dark-wood" src="rooms/thumbnails/anotherlightxd.jpg" />
+                  </a>
+                </div>
+                </div>
+              </div>
+            </div>
+          
+
+          <!-- Wall Textures -->
+          <div id="wallTextures" style="display:none; padding: 0 20px">
+            <div class="panel panel-default">
+              <div class="panel-heading">Baldosas</div>
+              <div class="panel-body" style="color: #333333">
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/marbletiles.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="Thumbnail marbletiles" src="rooms/thumbnails/thumbnail_marbletiles.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wallmap_yellow.png" texture-stretch="true" texture-scale="">
+                    <img alt="Thumbnail wallmap yellow" src="rooms/thumbnails/thumbnail_wallmap_yellow.png" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_brick.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_light_brick.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_light_fine_wood.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall1.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall1.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall2.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall2.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall5.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall5.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall8.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall8.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall9.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall9.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall10.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall10.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall11.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall11.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall12.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall12.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall13.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall13.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall14.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall14.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall15.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall15.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall17.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall17.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall18.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall18.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wall20.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/wall20.jpg" />
+                  </a>
+                </div>
+              <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/opaque_dry.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="opaque_dry" src="rooms/thumbnails/opaque_dry.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/dark-wood.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/dark-wood.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/stone-dark.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/stone-dark.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/white2.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/white2.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light-wood.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/light-wood.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/dark-wood2.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/dark-wood2.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/modern-dark.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/modern-dark.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/dark3.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/dark3.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/anotherlightxd.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/anotherlightxd.jpg" />
+                </a>
+              </div>
+              <div class="col-sm-6" style="padding: 3px">
+                <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/wallultima.jpg" texture-stretch="false" texture-scale="300">
+                  <img alt="dark-wood" src="rooms/thumbnails/wallultima.jpg" />
+                </a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-xs-9 main">
+
+          <!-- 3D Viewer -->
+          <div id="viewer">
+
+            <div id="main-controls">
+              <a href="#" class="btn btn-default btn-sm" id="new">
+                 Nuevo proyecto
+              </a>
+              <a href="#" class="btn btn-default btn-sm" id="saveFile">
+                 Guardar proyecto
+              </a>
+              <a class="btn btn-sm btn-default btn-file">
+               <input type="file" class="hidden-input" id="loadFile">
+                Cargar proyecto
+              </a>
+            </div>
+
+            <div id="camera-controls">
+              <a href="#" class="btn btn-default bottom" id="zoom-out">
+                <span class="glyphicon glyphicon-zoom-out"></span>
+              </a>
+              <a href="#" class="btn btn-default bottom" id="reset-view">
+                <span class="glyphicon glyphicon glyphicon-home"></span>
+              </a>
+              <a href="#" class="btn btn-default bottom" id="zoom-in">
+                <span class="glyphicon glyphicon-zoom-in"></span>
+              </a>
+              
+              <span>&nbsp;</span>
+
+              <a class="btn btn-default bottom" href="#" id="move-left" >
+                <span class="glyphicon glyphicon-arrow-left"></span>
+              </a>
+              <span class="btn-group-vertical">
+                <a class="btn btn-default" href="#" id="move-up">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                </a>
+                <a class="btn btn-default" href="#" id="move-down">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                </a>
+              </span>
+              <a class="btn btn-default bottom" href="#" id="move-right" >
+                <span class="glyphicon glyphicon-arrow-right"></span>
+              </a>
+            </div>
+
+            <div id="loading-modal">
+              <h1>Cargando...</h1>  
+            </div>
+          </div>
+
+          <!-- 2D Floorplanner -->
+          <div id="floorplanner">
+            <canvas id="floorplanner-canvas"></canvas>
+            <div id="floorplanner-controls">
+
+              <button id="move" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-move"></span>
+                Mover paredes
+              </button>
+              <button id="draw" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Dibujar paredes
+              </button>
+              <button id="delete" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-remove"></span>
+                Eliminar paredes
+              </button>
+              <span class="pull-right">
+                <button class="btn btn-primary btn-sm" id="update-floorplan">Terminar &raquo;</button>
+              </span>
+
+            </div>
+            <div id="draw-walls-hint">
+              Presiona la tecla "Esc" para parar de dibujar.
+            </div>
+          </div>
+
+          <!-- Add Items -->
+          <div id="add-items">        
+            <div class="row" id="items-wrapper">
+
+              <!-- Items added here by items.js -->
+            </div>
+          </div>
+      
+        </div>
+        <!-- End Right Column -->
+      </div>
+    </div>
+
+  </body>
+</html>
