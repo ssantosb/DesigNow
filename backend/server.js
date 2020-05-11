@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 const DB = "mongodb+srv://TeamRocket:teamrocket202010@principal-dv0we.mongodb.net/users?retryWrites=true&w=majority";
+
+
+// GET Y POST DE LOGIN
+
 app.get("/login", async (req, res, next) => {
     res.status(200).json({ status: "success", data: await userDB.find() });
 });
@@ -34,6 +38,8 @@ app.post("/login", async (req, res, next) => {
     }
 });
 
+// GET Y POST DE REGISTRO
+
 app.get("/register", async (req, res, next) => {
     res.status(200).json({ status: "success", data: await userDB.find() });
 });
@@ -44,7 +50,6 @@ app.post("/register", async (req, res, next) => {
 
     if (userData1 === null && userData2 === null) {
         res.status(200).json({ status: "success", data: req.body });
-        console.log(req.body);
         await userDB.create(req.body);
         return;
     }
@@ -62,6 +67,8 @@ app.post("/register", async (req, res, next) => {
     }
 
 });
+
+// Configuración de mongoose
 
 mongoose
     .connect(DB, {
