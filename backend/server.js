@@ -44,6 +44,8 @@ app.post("/register", async (req, res, next) => {
 
     if (userData1 === null && userData2 === null) {
         res.status(200).json({ status: "success", data: req.body });
+        console.log(req.body);
+        await userDB.create(req.body);
         return;
     }
 
