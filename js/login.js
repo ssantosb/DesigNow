@@ -86,7 +86,7 @@
             }
 
             else {
-                location.href = "/perfil.html";
+                location.href = "./perfil.html";
             }
 
         }));
