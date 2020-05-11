@@ -31,6 +31,15 @@
   <head>
     <script type="text/javascript">
       window.onload = function () {
+        document.getElementById("nametit").innerHTML = localStorage.getItem("name");
+        document.getElementById("nametit2").innerHTML = localStorage.getItem("name");
+        document.getElementById("dirtit").innerHTML = localStorage.getItem("direction");
+        document.getElementById("dirtit2").innerHTML = localStorage.getItem("direction");
+        document.getElementById("empresatit").innerHTML = localStorage.getItem("direction");
+        document.getElementById("emailtit").innerHTML = localStorage.getItem("email");
+        document.getElementById("usertit").innerHTML = localStorage.getItem("username");
+        document.getElementById("cellphonetit").innerHTML = localStorage.getItem("cellphone");
+
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
           const value = localStorage.getItem(key);
@@ -160,7 +169,7 @@
             <div class="container-fluid d-flex align-items-center">
               <div class="row">
                 <div class="col-lg-7 col-md-10">
-                  <h1 class="display-2 text-white">Hola Ester</h1>
+                  <h1 class="display-2 text-white">Hola <span id="nametit"></span> </h1>
                   <p class="text-white mt-2 mb-5">Éste es tú perfil. Acá puedes ver el progreso en tus proyectos y
                     manejarlos o asignar tareas.</p>
                 </div>
@@ -227,11 +236,11 @@
                       <p class="card-description">Información de usuario</p>
                       <ul class="about">
                         <li class="about-items"><i class="mdi mdi-account icon-sm "></i><span
-                            class="about-item-name">Nombre: </span><span class="about-item-detail">Ester Exposito</span>
+                            class="about-item-name">Nombre: </span><span id="nametit2" class="about-item-detail"></span>
                           <!--<a href="" class="about-item-edit">Edit</a>-->
                         </li>
                         <li class="about-items"><i class="mdi mdi-mail-ru icon-sm "></i><span
-                            class="about-item-name">Usuario: </span><span class="about-item-detail">ester123</span>
+                            class="about-item-name">Usuario: </span><span id="usertit" class="about-item-detail"></span>
                         </li>
                         <li class="about-items"><i class="mdi mdi-lock-outline icon-sm "></i><span
                             class="about-item-name">Contraseña: </span><span class="about-item-detail">**********</span>
@@ -242,27 +251,29 @@
                       <p class="card-description">Información de contacto</p>
                       <ul class="about">
                         <li class="about-items"><i class="mdi mdi-phone icon-sm "></i><span
-                            class="about-item-name">Telefono: </span><span
-                            class="about-item-detail">+9779861106179</span></li>
+                            class="about-item-name">Telefono: </span><span id="cellphonetit"
+                            class="about-item-detail"></span></li>
                         <li class="about-items"><i class="mdi mdi-map-marker icon-sm "></i><span
-                            class="about-item-name">Dirección: </span><span class="about-item-detail">254 National
-                            Highway , Hisar India</span> </li>
+                            class="about-item-name">Dirección: </span><span id="dirtit2"
+                            lass="about-item-detail"></span>
+                        </li>
                         <li class="about-items"><i class="mdi mdi-email-outline icon-sm "></i><span
-                            class="about-item-name">Email: </span><span class="about-item-detail"><a
-                              href="">ester706@gmail.com</a></span> </li>
+                            class="about-item-name">Email: </span><span id="emailtit" class="about-item-detail"><a
+                              href=""></a></span> </li>
                       </ul>
 
                       <p class="card-description">Información compañia </p>
                       <ul class="about">
                         <li class="about-items"><i class="mdi mdi-account icon-sm "></i><span
-                            class="about-item-name">Nombre empresa: </span><span class="about-item-detail"> Mandarina
+                            class="about-item-name">Nombre empresa: </span><span id="empresatit"
+                            class="about-item-detail">
                           </span></li>
                         <li class="about-items"><i class="mdi mdi-map-marker icon-sm "></i><span
-                            class="about-item-name">Dirección: </span><span class="about-item-detail">254 National
-                            Highway , Hisar India</span> </li>
+                            class="about-item-name">Dirección: </span><span id="dirtit"
+                            class="about-item-detail"></span> </li>
                         <li class="about-items"><i class="mdi mdi-web icon-sm "></i><span
-                            class="about-item-name">Página: </span><span class="about-item-detail"><a
-                              href="google.com">www.mandarina.com</a></span> </li>
+                            class="about-item-name">Página: </span><span class="about-item-detail"><a id="paginatit"
+                              href="google.com"></a></span> </li>
                       </ul>
 
                     </div>
