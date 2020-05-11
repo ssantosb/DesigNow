@@ -27,7 +27,6 @@ app.post("/login", async (req, res, next) => {
 
     else {
         if (userData.password === req.body.password) {
-            userData.password = undefined;
             res.status(200).json({ status: "success", data: userData });
             return;
         }

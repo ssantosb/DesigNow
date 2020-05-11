@@ -84,8 +84,17 @@
                 console.log(resp.status);
                 return alert(resp.message);
             }
-
             else {
+                localStorage.clear();
+                localStorage.setItem("name", resp.data.name);
+                localStorage.setItem("email", resp.data.email);
+                localStorage.setItem("username", resp.data.username);
+                localStorage.setItem("password", resp.data.password);
+                localStorage.setItem("cellphone", resp.data.cellphone);
+                localStorage.setItem("direction", resp.data.direction);
+                localStorage.setItem("page", resp.data.page);
+                localStorage.setItem("information", resp.data.information);
+
                 location.href = "./perfil.html";
             }
 
