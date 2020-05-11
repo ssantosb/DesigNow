@@ -52,6 +52,34 @@
 
       <link rel="stylesheet" href="css/style.css">
 
+      <!-- Carga el header segun si esta logueado o no-->
+      <script type="text/javascript">
+        window.onload = function () {
+          console.log(localStorage.getItem("name"));
+          console.log(localStorage.getItem("name") === null);
+          if (localStorage.getItem("name") == null) {
+            console.log("Entro al primer if")
+            document.getElementById("login").textContent = "Iniciar Sesion";
+            document.getElementById('proy').style.display = 'none';
+            document.getElementById('perf').style.display = 'none';
+            document.getElementById('out').style.display = 'none';
+            document.getElementById('arrow').style.display = 'none';
+          }
+          else {
+            document.getElementById('proy').style.display = true;
+            document.getElementById('perf').style.display = true;
+            document.getElementById('arrow').style.display = true;
+            document.getElementById("login").textContent = "Hola " + localStorage.getItem("name").split(" ")[0];
+          }
+        }
+
+        function cerrarSesion() {
+          console.log("True");
+          localStorage.removeItem('name');
+        }
+        ;
+      </script>
+
     </head>
 
     <body>
@@ -134,7 +162,14 @@
                         </div>
 
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
-                          <a href="login.html">Iniciar sesión</a>
+                          <li class="has-children active">
+                            <a href="login.html" id="login">Iniciar sesión</a>
+                            <ul class="dropdown arrow-top" id="arrow">
+                              <li><a href="projects.html" id="proy">Mis proyectos</a></li>
+                              <li><a href="perfil.html" id="perf">Mi perfil</a></li>
+                              <li><a href="index.html" onclick="cerrarSesion()" id="out">Cerrar sesion</a></li>
+                            </ul>
+                          </li>
                           <li><a href="#aboutus">¿Quienes somos?</a></li>
                           <li><a href="example/editor3D.html">Diseña</a></li>
                           <li><a href="diseñoinicio.html">Solicitar diseño</a></li>
