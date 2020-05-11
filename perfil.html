@@ -29,6 +29,7 @@
   <html lang="en">
 
   <head>
+
     <script type="text/javascript">
       window.onload = function () {
         document.getElementById("nametit").innerHTML = localStorage.getItem("name");
@@ -39,14 +40,6 @@
         document.getElementById("emailtit").innerHTML = localStorage.getItem("email");
         document.getElementById("usertit").innerHTML = localStorage.getItem("username");
         document.getElementById("cellphonetit").innerHTML = localStorage.getItem("cellphone");
-
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          const value = localStorage.getItem(key);
-          console.log("El key es " + key);
-          console.log("El value es " + value);
-
-        }
       };
     </script>
     <html lang="en">
@@ -163,7 +156,9 @@
             <div class="container-fluid d-flex align-items-center">
               <div class="row">
                 <div class="col-lg-7 col-md-10">
+
                   <h1 class="display-2 text-white">Hola <span id="nametit"></span> </h1>
+
                   <p class="text-white mt-2 mb-5">Éste es tú perfil. Acá puedes ver el progreso en tus proyectos y
                     manejarlos o asignar tareas.</p>
                 </div>
@@ -195,7 +190,9 @@
                       <div class="profile-header">
 
                         <div class="cover-image">
-                          <img src="images/ester.jpg" class="img img-fluid">
+
+                          <img src="images/blank_product.png" class="img img-fluid">
+
                         </div>
                         <div class="file btn btn-lg btn-primary">
 
@@ -235,6 +232,7 @@
                         </li>
                         <li class="about-items"><i class="mdi mdi-mail-ru icon-sm "></i><span
                             class="about-item-name">Usuario: </span><span id="usertit" class="about-item-detail"></span>
+
                         </li>
                         <li class="about-items"><i class="mdi mdi-lock-outline icon-sm "></i><span
                             class="about-item-name">Contraseña: </span><span class="about-item-detail">**********</span>
@@ -254,6 +252,7 @@
                         <li class="about-items"><i class="mdi mdi-email-outline icon-sm "></i><span
                             class="about-item-name">Email: </span><span id="emailtit" class="about-item-detail"><a
                               href=""></a></span> </li>
+
                       </ul>
 
                       <p class="card-description">Información compañia </p>
@@ -268,6 +267,7 @@
                         <li class="about-items"><i class="mdi mdi-web icon-sm "></i><span
                             class="about-item-name">Página: </span><span class="about-item-detail"><a id="paginatit"
                               href="google.com"></a></span> </li>
+
                       </ul>
 
                     </div>
