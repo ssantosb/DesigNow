@@ -39,14 +39,6 @@
         document.getElementById("emailtit").innerHTML = localStorage.getItem("email");
         document.getElementById("usertit").innerHTML = localStorage.getItem("username");
         document.getElementById("cellphonetit").innerHTML = localStorage.getItem("cellphone");
-
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          const value = localStorage.getItem(key);
-          console.log("El key es " + key);
-          console.log("El value es " + value);
-
-        }
       };
     </script>
     <html lang="en">
